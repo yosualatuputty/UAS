@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\jadwalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [jadwalController::class, 'index'])->name('index');
+
+Route::get('/search', [jadwalController::class, 'search'])->name('search'); 
+
+Route::get('/matkul/{Matkul}', [jadwalController::class, 'matkul'])->name('matkul'); 
