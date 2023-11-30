@@ -21,4 +21,8 @@ class Jadwal extends Model
         'Jam',
         'Ruang',
     ];
+
+    public function materi() {
+        return $this->hasOne(Materi::class,'ID', 'ID');
+    }
 }
