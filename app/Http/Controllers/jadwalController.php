@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 class jadwalController extends Controller
 {
     public function index(){
-        $jadwal = Jadwal::all();
-        return view('main.jadwal', compact('jadwal'));
+        $jadwal = Jadwal::where('is_praktikum' , 0)->get();
+        $jadwal_praktikum = Jadwal::where('is_praktikum' , 1)->get();
+        return view('main.jadwal', compact('jadwal', 'jadwal_praktikum'));
     }
 
     public function search(Request $request){

@@ -7,10 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Jadwal UAS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
+  <style>
+    div h2 {
+      margin-top: 1em;
+
+    }
+  </style>
+  </head>
 <body>
     @section('container')
     <div class="mx-auto" style="width: 80vw;">
+      <h2 class="">Teori</h2>
     <table class="table">
         <thead>
           <tr>
@@ -36,7 +43,7 @@
                 <td>{{ $baris->Ruang }}</td>
             </tr>
                 
-            @endforeach 
+            @endforeach
 
           {{-- <tr>
             <th scope="row">1</th>
@@ -58,6 +65,39 @@
             <td>@twitter</td>
             <td>@twitter</td>
           </tr> --}}
+        </tbody>
+      </table>
+
+
+      {{-- PRAKTIKUM --}}
+      <h2>Praktikum</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Mata Kuliah</th>
+            <th scope="col">Hari</th>
+            <th scope="col">Jam</th>
+            <th scope="col">Ruang</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($jadwal_praktikum as $baris2)
+          <tr>
+              <th scope="row">{{ $baris2->ID }}</th>
+              <td>
+                  <form action="{{ route('matkul', ['Matkul' => $baris2->Mata_Kuliah]) }}" method="GET">
+                      <button type="submit" class="btn">{{ $baris2->Mata_Kuliah }}</button>
+                  </form>
+              </td>
+              
+              <td>{{ $baris2->Day }}, {{ date('d-m-Y', strtotime($baris2->Hari)) }}</td>
+              <td>{{ $baris2->Jam }}</td>
+              <td>{{ $baris2->Ruang }}</td>
+          </tr>
+              
+          @endforeach 
+
         </tbody>
       </table>
       {{-- <div class="d-flex mx-auto justify-content-center">
