@@ -11,8 +11,6 @@ class Jadwal extends Model
 
     protected $table = "jadwal";
 
-    protected $dateFormat = 'd-m-Y';
-
     protected $primaryKey = "ID";
     protected $fillable = [
         'ID',

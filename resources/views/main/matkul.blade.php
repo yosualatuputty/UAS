@@ -14,8 +14,6 @@
         <div class="d-flex mx-auto justify-content-center ">
             <div class="d-flex flex-column align-items-center">
                 <h2 class="my-4">{{ $jadwal->Mata_Kuliah }}</h2>
-                {{-- <h3>Note:</h3>
-                <p>{{ $jadwal->materi->Note }}</p> --}}
             </div>
         </div>
 
@@ -59,6 +57,22 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="container text-center my-4">
+            @if($jadwal->is_done == 0)
+            <form action="{{ route('done') }}" method="get">
+                <input type="hidden" name="ID" id="" value="{{ $jadwal->ID }}">
+                <input type="hidden" name="status" id="" value="1">
+                <button class="btn btn-outline-success" type="submit">Mark as done</button>
+            </form>
+            @else
+            <form action="{{ route('done') }}" method="get">
+                <input type="hidden" name="ID" id="" value="{{ $jadwal->ID }}">
+                <input type="hidden" name="status" id="" value="0">
+                <button class="btn btn-outline-danger" type="submit">Mark not done</button>
+            </form>
+            @endif
         </div>
     @endsection
 </body>

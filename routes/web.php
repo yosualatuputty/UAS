@@ -18,4 +18,7 @@ Route::get('/', [jadwalController::class, 'index'])->name('index');
 
 Route::get('/search', [jadwalController::class, 'search'])->name('search'); 
 
-Route::get('/matkul/{Matkul}', [jadwalController::class, 'matkul'])->name('matkul'); 
+Route::get('/matkul/{Matkul}', [jadwalController::class, 'matkul'])->name('matkul');
+
+
+Route::get('/done', [jadwalController::class, 'done'])->name('done');

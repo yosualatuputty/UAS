@@ -25,6 +25,13 @@ class jadwalController extends Controller
         return view('main.matkul', compact('jadwal'));
     }
 
-
+    public function done(Request $request){
+        $ID = $request->input('ID');
+        $status = $request->input('status');
+        $jadwal = Jadwal::where('ID', $ID)->first();
+        $jadwal->is_done = $status;
+        $jadwal->save();
+        return $this->index();
+    }
     
 }
